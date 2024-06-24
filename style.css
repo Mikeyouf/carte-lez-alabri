@@ -1,0 +1,555 @@
+/* @media only screen and (max-height: 800px) {} */
+form {
+  display: grid;
+  grid-template-columns: auto;
+  grid-gap: 16px;
+}
+
+.info-commune {
+  width: 25vw;
+  min-width: 25vw;
+  max-height: 90vh;
+  justify-items: center;
+  align-items: center;
+  padding: 6px 8px;
+  font-size: 16px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  border-radius: 4px 0 0 4px;
+  position: absolute;
+  color: white;
+  right: calc(-25vw - 24px);
+  top: 7%;
+  background-color: #18244d;
+  transition: right 0.5s;
+  z-index: 999;
+  border-top: 6px solid #ea4a3c;
+}
+
+#wpcf7-f3182-p3184-o1 .form-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#wpcf7-f3182-p3184-o1 .form-group p {
+  margin-bottom: 16px;
+}
+
+form input[type="text"],
+form input[type="email"] {
+  height: 26px !important;
+  background-color: #fff;
+  border: 2px solid #fff;
+  border-radius: 4px;
+  width: 100%;
+}
+
+form label {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+input[type="submit"] {
+  cursor: pointer;
+  background-color: #ea4a3c;
+  color: whitesmoke;
+  font-weight: bold;
+  border: 2px solid #ea4a3c;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 18px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 5px 5px #3f88b628;
+  width: 100%;
+}
+
+input[type="submit"]:hover {
+  color: #ea4a3c;
+  background-color: white;
+  transition: all 0.3s ease-in-out;
+}
+
+#info-commune.show {
+  right: 0;
+  transition: all 0.3s ease-in;
+}
+
+#info-commune img {
+  width: 24px;
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  cursor: pointer;
+}
+
+#info-commune p {
+  color: white;
+}
+
+/* A supprimer pour l'intégration dans la page */
+
+html,
+body {
+  height: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#map {
+  /* margin-bottom: 24px; */
+  height: 100%;
+  min-height: 600px;
+  width: 100%;
+}
+
+h4 {
+  margin: 0 0 5px;
+  color: #ffffff;
+}
+
+.info h5 {
+  margin: 0;
+  color: cadetblue;
+}
+
+.info p {
+  margin: 5px 0;
+}
+
+.parent {
+  display: flex;
+  justify-content: center;
+}
+
+.message {
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+}
+
+h3,
+h4 {
+  margin: 16px auto;
+  color: #ffffff;
+}
+
+#liens {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+  padding: 8px 16px;
+  justify-content: center;
+}
+
+#liens div h2 {
+  text-align: left;
+  font-size: 20px;
+  margin: 48px 0 24px 0;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+#selectCommune {
+  padding: 8px 16px;
+}
+
+#choix-commune {
+  position: absolute;
+  top: calc(30% - 60px);
+  left: 0px;
+  z-index: 999;
+  background-color: #18244d;
+  color: white;
+  width: 300px;
+  min-height: 120px;
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+  padding: 8px;
+  border-radius: 0 0 4px 0;
+  transition: all 0.3s ease-in;
+  border-top: 6px solid #ea4a3c;
+}
+
+#choix-commune.isVisible {
+  left: -316px;
+  transition: all 0.3s ease-in;
+}
+
+#bouton {
+  background-color: #18244d;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  right: -80px;
+  top: -6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  border-top: 6px solid #ea4a3c;
+}
+
+#bouton img {
+  width: 48px;
+  height: 48px;
+}
+
+#message-boite {
+  background-color: #18244d;
+  color: white;
+  font-weight: bold;
+  padding: 8px;
+  text-align: center;
+  line-height: 24px;
+  position: absolute;
+  width: 260px;
+  top: 0;
+  left: calc(50% - 130px);
+  z-index: 999;
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  border-bottom: 6px solid #ea4a3c;
+}
+
+#message-boite p {
+  padding-top: 8px;
+}
+
+#message-boite img {
+  width: 24px;
+  position: absolute;
+  right: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+}
+
+#message-boite.goUp {
+  top: -300px;
+  transition: all 0.3s ease-in;
+}
+
+.select {
+  color: #ea4a3c;
+  background-color: #fff;
+  padding: 8px 16px;
+  font-size: 16px;
+  border: 2px solid #18244d;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  width: 100%;
+  text-align: center;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.select:focus {
+  background-color: #ea4a3c;
+  color: #fff;
+}
+
+.option {
+  color: #fff;
+  text-align: center;
+}
+
+.option:hover {
+  background-color: #ea4a3c !important;
+  color: #fff !important;
+}
+
+.hidden {
+  display: none;
+}
+
+/* PAGE SUCCESS */
+
+#message-success {
+  width: 360px;
+  /* height: 140px; */
+  background-color: #1b5961;
+  color: #fff;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 4px;
+  margin: 10vh auto;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 24px;
+  text-align: center;
+}
+
+#message-success #comeBack {
+  background-color: #fff;
+  color: #18244d;
+  border: 2px solid #1b5961;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease-in;
+}
+
+#message-success #comeBack:hover {
+  background-color: #1b5961;
+  color: #fff;
+  transition: all 0.3s ease-in;
+  border: 2px solid #fff;
+}
+
+/* ICONE DE RECHERCHE */
+
+.leaflet-control-geocoder {
+  margin-left: 12px !important;
+}
+
+.leaflet-control-geocoder {
+  border-radius: 4px !important;
+  border: 1px solid #18244d !important;
+}
+
+.leaflet-control-geocoder button {
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 4px !important;
+  background-color: #18244d !important;
+  border: 1px solid #18244d !important;
+  transition: all 0.3s ease-in;
+}
+
+.leaflet-control-geocoder button:hover {
+  background-color: #fff !important;
+  border-radius: 4px !important;
+  border: 1px solid #18244d !important;
+  transition: all 0.3s ease-in;
+  cursor: pointer;
+}
+
+.leaflet-control-geocoder .leaflet-control-geocoder-icon {
+  color: #ffffff !important;
+}
+
+.leaflet-control-geocoder-form {
+  background-color: #fff !important;
+}
+
+/* ZOOM CONTROL */
+
+.leaflet-control-zoom a {
+  width: 48px !important;
+  height: 48px !important;
+  background-color: #18244d !important;
+}
+
+.leaflet-control-zoom a span {
+  line-height: 48px;
+  color: #fff;
+}
+
+/* leaflet-control-layers */
+
+.leaflet-control-layers {
+  background-color: #18244d !important;
+  color: #fff !important;
+  font-family: Verdana, Geneva, Tahoma, sans-serif !important;
+  /* width: 48px!important;
+  height: 48px!important; */
+}
+
+.leaflet-control-layers input {
+  border-color: #18244d;
+}
+
+.leaflet-popup-content {
+  font-size: 14px;
+  color: #18244d;
+  /* autres styles */
+}
+
+.leaflet-popup-content a {
+  font-weight: bold;
+}
+
+.leaflet-popup-content a:hover {
+  color: #ea4a3c;
+}
+
+/* BOUTONS POPUP */
+
+.leaflet-popup-content-wrapper p {
+  text-align: center;
+  font-size: 14px;
+}
+
+.leaflet-popup-content-wrapper .eligible {
+  text-align: center;
+}
+
+.leaflet-popup-content-wrapper p b {
+  color: #ea4a3c;
+}
+
+.leaflet-popup-content-wrapper .btn-1,
+.leaflet-popup-content-wrapper .btn-2 {
+  text-align: center;
+}
+
+.btn-1 a {
+  display: inline-block;
+  background-color: #18244d; /* Vert comme couleur de fond */
+  color: white !important; /* Texte blanc */
+  padding: 10px 20px; /* Padding pour augmenter la taille */
+  text-align: center; /* Centrer le texte */
+  text-decoration: none; /* Pas de soulignement pour les liens */
+  font-size: 16px; /* Taille de la police */
+  margin: 4px 2px; /* Espacement autour des boutons */
+  cursor: pointer; /* Curseur de pointeur pour indiquer la possibilité de cliquer */
+  border: 1px solid #18244d;
+  border-radius: 5px; /* Coins arrondis */
+  transition: 0.3s; /* Transition douce pour les effets de survol */
+}
+
+.btn-1 a:hover {
+  background-color: #ffffff; /* Couleur légèrement différente au survol */
+  color: #18244d !important;
+}
+
+.btn-2 a {
+  display: inline-block;
+  background-color: #ea4a3c; /* Vert comme couleur de fond */
+  color: white !important; /* Texte blanc */
+  padding: 10px 20px; /* Padding pour augmenter la taille */
+  text-align: center; /* Centrer le texte */
+  text-decoration: none; /* Pas de soulignement pour les liens */
+  font-size: 16px; /* Taille de la police */
+  margin: 4px 2px; /* Espacement autour des boutons */
+  cursor: pointer; /* Curseur de pointeur pour indiquer la possibilité de cliquer */
+  border: 1px solid #ea4a3c;
+  border-radius: 5px; /* Coins arrondis */
+  transition: 0.3s; /* Transition douce pour les effets de survol */
+}
+
+.btn-2 a:hover {
+  background-color: #ffffff; /* Couleur légèrement différente au survol */
+  color: #ea4a3c !important;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .info-commune {
+    width: 60vw;
+  }
+  form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(6, auto);
+    /* définir le nombre de lignes */
+    grid-gap: 16px;
+    width: 100%;
+  }
+  input {
+    grid-column: span 1;
+  }
+  input[type="submit"] {
+    grid-column: span 2;
+    /* fait que le bouton occupe les deux colonnes */
+  }
+  #adresse {
+    grid-row: 4 !important;
+    /* définir la ligne */
+    grid-column: 1 / 3 !important;
+    /* définir les colonnes */
+  }
+  label {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-height: 800px) and (min-width: 768px) {
+  .info-commune {
+    width: 60vw;
+  }
+  form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(6, auto);
+    /* définir le nombre de lignes */
+    grid-gap: 16px;
+    width: 100%;
+  }
+  input {
+    grid-column: span 1;
+  }
+  input[type="submit"] {
+    grid-column: span 2;
+    /* fait que le bouton occupe les deux colonnes */
+  }
+  #adresse {
+    grid-row: 4 !important;
+    /* définir la ligne */
+    grid-column: 1 / 3 !important;
+    /* définir les colonnes */
+  }
+  label {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .parent {
+    display: flex;
+    flex-direction: column;
+  }
+  #map {
+    /* max-height: 500px; */
+    min-width: 100%;
+    width: 100vw;
+    min-height: 100vh;
+  }
+  .info-commune {
+    min-width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+    top: 0;
+    margin: 0 auto;
+    right: calc(-100vw - 24px);
+    z-index: 1000;
+  }
+  #liens {
+    width: 100%;
+  }
+  #liens div h2 {
+    font-size: 14px;
+    text-align: center;
+    margin-top: 36px;
+  }
+  /* formulaire */
+  form {
+    flex-direction: column;
+  }
+  input,
+  label {
+    flex: unset;
+    max-width: 90%;
+    font-size: 14px;
+  }
+  #selectCommune {
+    padding: 4px 8px;
+  }
+  #choix-commune {
+    bottom: 5%;
+    top: calc(100% - 148px);
+    left: 0px;
+    width: 70%;
+  }
+  #choix-commune.isVisible {
+    left: -75%;
+  }
+}

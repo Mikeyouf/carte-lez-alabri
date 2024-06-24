@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<!-- Placer les balises dans le Head de la page -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+  <link href="//unpkg.com/leaflet/dist/leaflet.css" rel="stylesheet">
+  <script src="./data/parcelles_eligibles/CLAPIERS.js" type="text/javascript" defer></script>
+  <script src="./data/parcelles_eligibles/GRABELS.js" type="text/javascript" defer></script>
+  <script src="./data/parcelles_eligibles/JUVIGNAC.js" type="text/javascript" defer></script>
+  <script src="./data/parcelles_eligibles/LATTES.js" type="text/javascript" defer></script>
+  <script src="./data/parcelles_eligibles/LAVERUNE.js" type="text/javascript" defer></script>
+  <script src="./data/parcelles_eligibles/LE-TRIADOU.js" type="text/javascript" defer></script>
+  <script src="./data/parcelles_eligibles/LES-MATELLES.js" type="text/javascript" defer></script>
+  <script src="./data/parcelles_eligibles/MIREVAL.js" type="text/javascript" defer></script>
+  <script src="./data/parcelles_eligibles/MONTFERRIER-SUR-LEZ.js" type="text/javascript" defer></script>
+  <script src="./data/parcelles_eligibles/PALAVAS-LES-FLOTS.js" type="text/javascript" defer></script>
+  <script src="./data/parcelles_eligibles/PEROLS.js" type="text/javascript" defer></script>
+  <script src="./data/parcelles_eligibles/PIGNAN.js" type="text/javascript" defer></script>
+  <script src="./data/parcelles_eligibles/PRADES-LE-LEZ.js" type="text/javascript" defer></script>
+  <script src="./data/parcelles_eligibles/SAINT-CLEMENT-DE-RIVIERE.js" type="text/javascript" defer></script>
+  <script src="./data/parcelles_eligibles/SAINT-GELY-DU-FESC.js" type="text/javascript" defer></script>
+  <script src="./data/parcelles_eligibles/SAINT-JEAN-DE-CUCULLES.js" type="text/javascript" defer></script>
+  <script src="./data/parcelles_eligibles/SAINT-MATHIEU-DE-TREVIERS.js" type="text/javascript" defer></script>
+  <script src="./data/parcelles_eligibles/SAUSSAN.js" type="text/javascript" defer></script>
+  <script src="./data/parcelles_eligibles/VIC-LA-GARDIOLE.js" type="text/javascript" defer></script>
+  <script src="./data/parcelles_non_eligibles/CASTELNAU-LE-LEZ.js" type="text/javascript" defer></script>
+  <script src="./data/parcelles_non_eligibles/CAZEVIEILLE.js" type="text/javascript" defer></script>
+  <script src="./data/parcelles_non_eligibles/COMBAILLAUX.js" type="text/javascript" defer></script>
+  <script src="./data/parcelles_non_eligibles/COURNONSEC.js" type="text/javascript" defer></script>
+  <script src="./data/parcelles_non_eligibles/COURNONTERRAL.js" type="text/javascript" defer></script>
+  <script src="./data/parcelles_non_eligibles/FABREGUES.js" type="text/javascript" defer></script>
+  <script src="./data/parcelles_non_eligibles/MONTARNAUD.js" type="text/javascript" defer></script>
+  <script src="./data/parcelles_non_eligibles/MONTPELLIER.js" type="text/javascript" defer></script>
+  <script src="./data/parcelles_non_eligibles/MURLES.js" type="text/javascript" defer></script>
+  <script src="./data/parcelles_non_eligibles/MURVIEL-LES-MONTPELLIER.js" type="text/javascript" defer></script>
+  <script src="./data/parcelles_non_eligibles/SAINT-GEORGES-D-ORQUES.js" type="text/javascript" defer></script>
+  <script src="./data/parcelles_non_eligibles/SAINT-JEAN-DE-VEDAS.js" type="text/javascript" defer></script>
+  <script src="./data/parcelles_non_eligibles/VAILHAUQUES.js" type="text/javascript" defer></script>
+  <script src="./data/parcelles_non_eligibles/VALFLAUNES.js" type="text/javascript" defer></script>
+  <script src="./data/parcelles_non_eligibles/VILLENEUVE-LES-MAGUELONE.js" type="text/javascript" defer></script>
+  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+  <title>Carte d'éligibilité</title>
+</head>
+
+<body>
+  <!-- Prendre à partir de cette balise div -->
+  <!-- <div class="parent"> -->
+  <div id="map"></div>
+  <div id="choix-commune">
+    <div id="bouton">
+      <img id="house" src="./images/house.png" alt="choix de ma commune" />
+    </div>
+    <div id="selectCommune">
+      <h4>1. Je choisis ma commune</h4>
+      <select class="select" id="select">
+        <option class="option" value="" selected>Choisir ma commune</option>
+        <option class="option" value="CASTELNAU LE LEZ">Castelnau le Lez</option>
+        <option class="option" value="CAZEVIEILLE">Cazevieille</option>
+        <option class="option" value="CLAPIERS">Clapiers</option>
+        <option class="option" value="COMBAILLAUX">Combaillaux</option>
+        <option class="option" value="COURNONSEC">Cournonsec</option>
+        <option class="option" value="COURNONTERRAL">Cournonterral</option>
+        <option class="option" value="FABREGUES">Fabrègues</option>
+        <option class="option" value="GRABELS">Grabels</option>
+        <option class="option" value="JUVIGNAC">Juvignac</option>
+        <option class="option" value="LATTES">Lattes</option>
+        <option class="option" value="LAVERUNE">Laverune</option>
+        <option class="option" value="LE TRIADOU">Le Triadou</option>
+        <option class="option" value="LES MATELLES">Les Matelles</option>
+        <option class="option" value="MIREVAL">Mireval</option>
+        <option class="option" value="MONTARNAUD">Montarnaud</option>
+        <option class="option" value="MONTFERRIER-SUR-LEZ">Montferrier-sur-Lez</option>
+        <option class="option" value="MONTPELLIER">Montpellier</option>
+        <option class="option" value="MURLES">Murles</option>
+        <option class="option" value="MURVIEL-LES-MONTPELLIER">Murviel-les-Montpellier</option>
+        <option class="option" value="PALAVAS-LES-FLOTS">Palavas-les-Flots</option>
+        <option class="option" value="PEROLS">Perols</option>
+        <option class="option" value="PIGNAN">Pignan</option>
+        <option class="option" value="PRADES-LE-LEZ">Prades-le-Lez</option>
+        <option class="option" value="SAUSSAN">Saussan</option>
+        <option class="option" value="SAINT CLEMENT DE RIVIERE">St Clément de Rivière</option>
+        <option class="option" value="SAINT GEORGES D ORQUES">St Georges d'Orques</option>
+        <option class="option" value="SAINT-GELY-DU-FESC">St Gely-du-Fesc</option>
+        <option class="option" value="SAINT-JEAN-DE-CUCULLES">St Jean-de-Cuculles</option>
+        <option class="option" value="SAINT-JEAN-DE-VEDAS">St-Jean-de-Vedas</option>
+        <option class="option" value="SAINT-MATHIEU-DE-TREVIERS">St Mathieu-de-Tréviers</option>
+        <option class="option" value="VAILHAUQUES">Vailhauques</option>
+        <option class="option" value="VALFLAUNES">Valflaunes</option>
+        <option class="option" value="VIC-LA-GARDIOLE">Vic-la-Gardiole</option>
+        <option class="option" value="VILLENEUVE-LES-MAGUELONE">Villeneuve-les-Maguelone</option>
+      </select>
+    </div>
+  </div>
+  <div class="info-commune" id="info-commune">
+    <img src="./images/cross.png" alt="croix blanche" id="croix-right" />
+    <div id="liens">
+      <div>
+        <h2>2. Je suis éligible, je complète le formulaire</h2>
+        <form action="/success.html" method="POST" data-netlify="true" name="contact-eligibilite"
+          netlify-honeypot="bot-field">
+          <p class="hidden" hidden>
+            <label>
+              Don’t fill this out if you’re human: <input name="bot-field" />
+            </label>
+          </p>
+          <input type="hidden" name="form-name" value="contact-eligibilite">
+          <div class="form-group">
+            <label for="nom">Nom*</label>
+            <input type="text" id="nom" name="nom" placeholder="votre nom" required>
+          </div>
+          <div class="form-group">
+            <label for="prenom">Prénom*</label>
+            <input type="text" id="prenom" name="prenom" placeholder="votre prénom" required>
+          </div>
+          <input type="text" id="cadastre" name="cadastre" value="${lengthOfResult}" hidden>
+          <input type="text" id="idProprio" name="idProprio" value="${idProprio}" hidden>
+          <div class="form-group adresse">
+            <label for="adresse">Adresse*</label>
+            <input type="text" id="adresse" name="adresse" placeholder="votre adresse"
+              value="${communeIsCorrect ? street : " " }" required>
+          </div>
+          <div class="form-group">
+            <label for="codePostal">Code postal*</label>
+            <input type="text" id="codePostal" name="codePostal" placeholder="votre code postal"
+              value="${communeIsCorrect ? postaleCode : " "}" required>
+          </div>
+          <div class="form-group">
+            <label for="commune">Commune*</label>
+            <input type="text" id="commune" name="commune" value="${commune}" required>
+          </div>
+          <div class="form-group">
+            <label for="telephone">Numéro de téléphone</label>
+            <input type="text" id="telephone" name="telephone" placeholder="votre numéro de téléphone">
+          </div>
+          <div class="form-group">
+            <label for="email">Email*</label>
+            <input type="email" id="email" name="email" placeholder="votre email" required>
+          </div>
+          <input type="submit" value="Envoyer">
+        </form>
+      </div>
+    </div>
+  </div>
+  <div id="message-boite" class="goUp">
+    <img src="./images/cross.png" alt="croix blanche" id="croix" />
+    <p>Erreur avec la géolocalisation de votre commune, veuillez la sélectionner dans le panneau de gauche</p>
+  </div>
+  <!-- </div> -->
+  <script src="script.js" type="text/javascript" defer></script>
+  <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
+  <!-- jusqu'ici -->
+</body>
+
+</html>
